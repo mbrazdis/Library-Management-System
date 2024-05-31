@@ -1,0 +1,388 @@
+﻿<Window x:Class="LibraryMB3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryMB3"
+        xmlns:views="clr-namespace:LibraryMB3.Views"
+        xmlns:viewModel="clr-namespace:LibraryMB3.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Name="LibraryMB" Height="550" Width="1200" WindowStartupLocation="CenterOwner" FontSize="24" FontWeight="Bold" Background="#272829" ResizeMode="NoResize">
+
+
+    <Grid Background="#61677A">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image Source="C:\Users\sorin\source\repos\LibraryMB1\LibraryMB1\Logos\book.png"/>
+        <ContentControl  Grid.Column="1" Content="{Binding}"  Grid.Row="1" Grid.RowSpan="8" Height="NaN" Margin="0,0,0,0" Width="NaN" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+        <Label x:Name="lblWindowName" Grid.Column="1"  Content="LibraryMB" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Center"/>
+        <StackPanel Grid.Row="1" Margin="2,0,2,0" >
+            <Button Grid.Row="1" Name="btnAuthor" Height="55" Width="250" HorizontalAlignment="Left" Click="btnAuthor_Click" Background="#61677A" BorderBrush="Black" BorderThickness="3" >
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="AuthorImage" HorizontalAlignment="Left" Height="auto" Width="73" Margin="0,0,0,0" Source="C:\Users\sorin\source\repos\LibraryMB1\LibraryMB1\Logos\author.png"/>
+                    <TextBlock Text="Author" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#BDBDBD" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="5" Color="Gray" Opacity="20" BlurRadius="20"/>
+
+                                    </Setter.Value>
+                                </Setter>
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Margin="2,0,2,0">
+            <Button Grid.Row="2" Name="btnAuthorBook" Height="54" Width="250" HorizontalAlignment="Left" Background="#61677A" BorderBrush="Black" BorderThickness="3">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="AuthorBookImage" HorizontalAlignment="Left" Height="auto" Width="73" Margin="0,0,0,0" Source="C:\Users\sorin\source\repos\LibraryMB1\LibraryMB1\Logos\user_book.png"/>
+                    <TextBlock Text="Author Book" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#BDBDBD" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="5" Color="Gray" Opacity="20" BlurRadius="20"/>
+
+                                    </Setter.Value>
+                                </Setter>
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Margin="2,0,2,0">
+            <Button Grid.Row="3" Name="btnBook" Height="54" Width="250" HorizontalAlignment="Left" Click="btnBookClick" Background="#61677A" BorderBrush="Black" BorderThickness="3">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="BookImage" HorizontalAlignment="Left" Height="auto" Width="73" Margin="0,0,0,0" Source="C:\Users\sorin\source\repos\LibraryMB1\LibraryMB1\Logos\book_7698945.png"/>
+                    <TextBlock Text="Book" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#BDBDBD" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="5" Color="Gray" Opacity="20" BlurRadius="20"/>
+
+                                    </Setter.Value>
+                                </Setter>
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="4" Margin="2,0,2,0">
+            <Button Grid.Row="4" Name="btnBookType" Height="54" Width="250" HorizontalAlignment="Left" Click="btnBookTypeClick" Background="#61677A" BorderBrush="Black" BorderThickness="3">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="BookTypeImage" HorizontalAlignment="Left" Height="auto" Width="73" Margin="0,0,0,0" Source="C:\Users\sorin\source\repos\LibraryMB1\LibraryMB1\Logos\storytelling_3627777.png"/>
+                    <TextBlock Text="Book Type" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#BDBDBD" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="5" Color="Gray" Opacity="20" BlurRadius="20"/>
+
+                                    </Setter.Value>
+                                </Setter>
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="5" Margin="2,0,2,0">
+            <Button Grid.Row="5" Name="btnPublisher" Height="54" Width="250" HorizontalAlignment="Left" Click="btnPublisher_Click" Background="#61677A" BorderBrush="Black" BorderThickness="3">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="PublisherImage" HorizontalAlignment="Left" Height="auto" Width="73" Margin="0,0,0,0" Source="C:\Users\sorin\source\repos\LibraryMB1\LibraryMB1\Logos\book-with-white-bookmark_33277.png"/>
+                    <TextBlock Text="Publisher" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#BDBDBD" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="5" Color="Gray" Opacity="20" BlurRadius="20"/>
+
+                                    </Setter.Value>
+                                </Setter>
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="6" Margin="2,0,2,0">
+            <Button Grid.Row="6" Name="btnUser" Height="54" Width="250" HorizontalAlignment="Left" Click="btnUser_Click" Background="#61677A" BorderBrush="Black" BorderThickness="3">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="userImage" HorizontalAlignment="Left" Height="auto" Width="73" Margin="0,0,0,0" Source="C:\Users\sorin\source\repos\LibraryMB1\LibraryMB1\Logos\user.png"/>
+                    <TextBlock Text="User" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#BDBDBD" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="5" Color="Gray" Opacity="20" BlurRadius="20"/>
+
+                                    </Setter.Value>
+                                </Setter>
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="7" Margin="2,0,2,0">
+            <Button Grid.Row="7" Name="btnUserBook" Height="54" Width="250" HorizontalAlignment="Left" Background="#61677A" BorderBrush="Black" BorderThickness="3">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="userUserBook" HorizontalAlignment="Left" Height="auto" Width="73" Margin="0,0,0,0" Source="C:\Users\sorin\source\repos\LibraryMB1\LibraryMB1\Logos\user_book.png"/>
+                    <TextBlock Text="UserBook" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#BDBDBD" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="5" Color="Gray" Opacity="20" BlurRadius="20"/>
+
+                                    </Setter.Value>
+                                </Setter>
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="8" Margin="2,0,2,0">
+            <Button Grid.Row="8" Name="btnExit" Height="54" Width="250" HorizontalAlignment="Left" Background="#61677A" BorderBrush="Black" BorderThickness="3">
+                <Grid Width="230">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="userExit" HorizontalAlignment="Left" Height="auto" Width="73" Margin="0,0,0,0" Source="C:\Users\sorin\source\repos\LibraryMB1\LibraryMB1\Logos\exit.png"/>
+                    <TextBlock Text="Exit" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </Grid>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="20">
+                                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="#BDBDBD" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect ShadowDepth="5" Color="Gray" Opacity="20" BlurRadius="20"/>
+
+                                    </Setter.Value>
+                                </Setter>
+
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+    </Grid>
+    <Window.Resources>
+        <DataTemplate x:Name="BookTemplate" DataType="{x:Type viewModel:BookViewModel}">
+            <views:BookList>
+                
+            </views:BookList>
+        </DataTemplate>
+        <DataTemplate x:Name="PublisherTemplate" DataType="{x:Type viewModel:PublisherViewModel}">
+            <views:PublisherList>
+                
+            </views:PublisherList>
+        </DataTemplate>
+        <DataTemplate x:Name="AuthorTemplate" DataType="{x:Type viewModel:AuthorViewModel}">
+            <views:AuthorList>
+                
+            </views:AuthorList>
+        </DataTemplate>
+        <DataTemplate x:Name="BookTypeTemplate" DataType="{x:Type viewModel:BookTypeViewModel}">
+            <views:BookTypeList>
+                
+            </views:BookTypeList>
+        </DataTemplate>
+        <DataTemplate x:Name="UserTemplate" DataType="{x:Type viewModel:UserViewModel}">
+            <views:UserList>
+                
+            </views:UserList>
+        </DataTemplate>
+    </Window.Resources>
+</Window>

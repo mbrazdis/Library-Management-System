@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="LibraryMB3.Views.BookList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LibraryMB3.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Margin="40,5,40,4" Name="btnAdd" Content="Add" FontSize="18" FontWeight="Bold" Click="btnAdd_Click"/>
+            <Button Margin="40,5,40,4" Name="btnUpdate" Content="Update" Grid.Column="1" FontSize="18" FontWeight="Bold" Click="btnUpdate_Click" />
+            <Button Margin="40,5,40,4" Name="btnDelete" Content="Delete" Grid.Column="2" FontSize="18" FontWeight="Bold" Click="btnDelete_Click" />
+
+        </Grid>
+
+
+        <DataGrid x:Name="GridBooks" IsReadOnly="True" AutoGenerateColumns="False" SelectionUnit="FullRow" SelectionChanged="GridBooks_SelectionChanged">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="0.5*" Binding="{Binding BookId}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Book Type Id" Width="2*" Visibility="Hidden" Binding="{Binding BookTypeId}"/>
+                <DataGridTextColumn Header="Book Type" Width="2.5*" Binding="{Binding BookTypeName}"/>
+                <DataGridTextColumn Header="Publisher Id" Width="2*" Visibility="Hidden" Binding="{Binding PublisherId}"/>
+                <DataGridTextColumn Header="Publisher" Width="1.5*" Binding="{Binding PublishName}"/>
+                <DataGridTextColumn Header="Title" Width="2.5*" Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="Year" Width="0.7*" Binding="{Binding PublishYear}"/>
+                <DataGridTextColumn Header="Stock" Width="0.75*" Binding="{Binding Stock}"/>
+                <DataGridTextColumn Header="Active" Width="*" Binding="{Binding Active}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</UserControl>
